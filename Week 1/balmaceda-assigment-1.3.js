@@ -10,7 +10,7 @@
 
 const header = require('../balmaceda-header.js');
 
-console.log(header.display("Griselda", "Balmaceda", "Week 1"));
+console.log(header.display("Griselda", "Balmaceda", "Assignment 1.3"));
 
 
 //creating a Phone constructor object 
