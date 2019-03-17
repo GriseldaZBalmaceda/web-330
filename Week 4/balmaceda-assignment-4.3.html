@@ -1,0 +1,48 @@
+<!--
+============================================
+; Title:  Balmaceda-assignment-4.3
+; Author: Professor Krasso 
+; Date:   16 March 2019
+; Modified By: Griselda Balmaceda
+; Description: Creating Delete request
+;===========================================    
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Assignment name</title>
+
+    <!-- jQuery reference -->
+    <script
+      type="text/javascript"
+      src="https://gc.kis.v2.scr.kaspersky-labs.com/5DACB2B0-5003-6543-8B39-D8EE6E4FC44C/main.js"
+      charset="UTF-8"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </head>
+  <!--creating button with id-->
+  <button id="deleteExample">Delete with this button</button>
+  <body>
+    <script>
+        //creating delete object literal and console logging information 
+      $(function() {
+          $("#deleteExample").click(function(){
+           $.ajax({
+               url:"http://httpbin.org/delete",
+               datatype:"json",
+               type:"DELETE",
+               data:{username:"user1",password:"password"},
+               success:function(data,status){
+                   console.log(
+                       "UserName: " + data.form.username +
+                       "\nPassword: "+ data.form.password +
+                       "\nStatus: " + status 
+                   );
+               }
+           });
+          });
+      });
+    </script>
+  </body>
+</html>
