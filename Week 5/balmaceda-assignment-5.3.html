@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Exercise 5.2 - The Proxy Pattern</title>
+    <!--google font-->
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <!-- jquery Reference Library -->
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <!--styling-->
+    <style>
+        body {
+            background-color: #ffd7e8;
+            color: #866ec7;
+            font-family: 'Pacifico', cursive;
+        }
+
+        .card {
+            margin: auto;
+            width: 50%;
+            background-color: white;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px;
+            border-style: none;
+            background-color: #866ec7;
+            margin-top: 20px;
+        }
+
+        h2 {
+            font-size: 50px;
+            text-align: center;
+            color: #bf9fee
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Happy Easter</h2>
+    <div class="card">
+        <span id="message">Click to see a special message:)</span>
+        </br>
+        <button id="button1">Press Me</button>
+    </div>
+    <script>
+        $(function () {
+            var message = {
+                type: "Friendly",
+                from: "Mom",
+                display: function () {
+                    $("#message").html('');
+                    $("#message").append("<img src='easter.jpg'>" + "this is a " + this.type +" message from " + this.from)
+                }
+            };
+            $('#button1').click($.proxy(message, "display"));
+        });
+    </script>
+</body>
+
+</html>
