@@ -1,0 +1,60 @@
+<!--
+============================================
+; Title:  Balmaceda-assignment-7.2
+; Author: Professor Krasso 
+; Date:   4 March 2019
+; Modified By: Griselda Balmaceda
+; Description: if binding
+;===========================================    
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <title>Exercise 7.2</title>
+
+    <!-- Stylesheet - Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+        integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous" />
+
+    <!-- JavaScript Libraries -->
+    <script src="/knockout-3.4.2.js"></script>
+</head>
+
+<body>
+    <h2 class="text-center">Assignment 7.2</h2>
+    <div class="container">
+        <div class="card p-5">
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" data-bind="value:name" class="form-control">
+            </div>
+            <div data-bind="if:name">
+                <label>Last Name</label>
+                <input type="text" data-bind="value:lastName" class="form-control">
+            </div>
+            <div class="text-center mt-3"data-bind="if:lastName">
+                <h3>Hello <span data-bind="text:fullName"></span></h3>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+<script>
+    function PersonViewModel() {
+        this.name = ko.observable("");
+        this.lastName = ko.observable("");
+        this.fullName = ko.pureComputed(function () {
+            return this.name() + " " + this.lastName();
+        }, this);
+    }
+    ko.applyBindings(new PersonViewModel())
+</script>
+
+</html>
