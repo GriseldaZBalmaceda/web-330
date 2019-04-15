@@ -70,10 +70,8 @@
                             </div>
                         </div>
                     </div>
-
-
-
                 </div>
+                <!---Employee List-->
                 <div class="col-md-6">
                     <div class="card card-inverse" style="background-color: #333; border-color: #333; color: white;">
                         <div class="card-block p-3">
@@ -107,6 +105,30 @@
                                         </tr>
                                     </tbody>
                                 </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Editing Employees-->
+                <div data-bind="if: Employee" style="position:absolute;margin:auto;margin-left:20%;width:30%;">
+                    <div class="card card-inverse" style="background-color: #333; border-color: #333; color: white;">
+                        <div class="card-block p-3">
+                            <h3 class="card-title">Employee List</h3>
+                            <div class="card-text">
+                                <div class="form-group">
+                                    <label for="txtName">Name: </label>
+                                    <input type="text" id="txtName" data-bind="value: Employee().Name"
+                                        class="form-control" />
+                                </div>
+
+                                <div class="form-group float-right">
+                                    <button data-bind="click: $root.cancel" class="btn btn-group btn-danger">
+                                        Cancel
+                                    </button>
+                                    <button data-bind="click: $root.update" class="btn btn-group btn-success">
+                                        Save
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -149,7 +171,7 @@
                 self.add = function () {
                     if ((self.nameToAdd() !== "") && self.Employees.indexOf(self.nameToAdd()) < 0) {
                         self.error("");
-                        var employeeId = self.Employees.length + 1;
+                        var employeeId = self.Employees().length + 1;
                         self.Employees.push(new EmployeeNew(employeeId, self.nameToAdd()));
                     } else {
                         self.error(" Duplicate or Invalid Entry")
@@ -170,7 +192,7 @@
 
                 self.update = function () {
                     var l_employee = self.Employee();
-                    self.Employees.remove(self.Employee());
+                    self.Employees.pop(self.Employee());
                     self.Employees.push(l_employee);
                 };
             }
